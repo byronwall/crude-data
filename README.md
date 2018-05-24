@@ -4,19 +4,22 @@ This is a very crude server which is meant to store key value pairs.  The idea i
 
 ## endpoints
 
+All of the endpoints are simple GET requests.  This is not a good idea but works well enough to go with it for now.
+
 ```
-data.byroni.us/key/value
+http://data.byroni.us/key/value
 ```
 
 This will store a key value pair into the file.  The idea is that you will send in /time/data
 
 ```
-data.byroni.us/data
+http://data.byroni.us/data
 ```
 
 This will download the data.
 
 ```
+Same link as above but not repeated here to avoid mistakes
 /clear
 ```
 
