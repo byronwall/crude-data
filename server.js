@@ -20,5 +20,10 @@ app.get("/data", (req, res) => {
   res.send(data);
 });
 
+app.get("/clear", (req, res) => {
+  fs.writeFileSync("./data.csv", "");
+  res.send("data cleared");
+});
+
 const port = 8081;
 app.listen(port, () => console.log("Example app listening on port 3000!"));
