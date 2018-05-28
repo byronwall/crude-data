@@ -3,6 +3,17 @@ const app = express();
 
 const fs = require("fs");
 
+app.get("/byron/:value", (req, res) => {
+  console.log(req.params);
+
+  const value = req.params["value"];
+
+  const data = value + "\n";
+
+  fs.appendFileSync("./data_byron.csv", data);
+  res.send("data added: " + value);
+});
+
 app.get("/:time/:value", (req, res) => {
   console.log(req.params);
 
@@ -20,10 +31,20 @@ app.get("/data", (req, res) => {
   res.send(data);
 });
 
+app.get("/data_byron", (req, res) => {
+  const data = fs.readFileSync("data_byron.csv");
+  res.send(data);
+});
+
 app.get("/clear", (req, res) => {
   fs.writeFileSync("./data.csv", "");
   res.send("data cleared");
 });
 
+app.get("/clear_byron", (req, res) => {
+  fs.writeFileSync("./data_byron.csv", "");
+  res.send("data cleared");
+});
+
 const port = 8081;
-app.listen(port, () => console.log("Example app listening on port 3000!"));
+app.listen(port, () => console.log("Example app listening on port 8081!"));
