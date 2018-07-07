@@ -8,7 +8,8 @@ app.get("/byron/:value", (req, res) => {
 
   const value = req.params["value"];
 
-  const data = value + "\n";
+  const data =
+    new Date().toLocaleString("en-us").replace(",", "") + "," + value + "\n";
 
   fs.appendFileSync("./data_byron.csv", data);
   res.send("data added: " + value);
@@ -20,7 +21,13 @@ app.get("/:time/:value", (req, res) => {
   const time = req.params["time"];
   const value = req.params["value"];
 
-  const data = time + "," + value + "\n";
+  const data =
+    new Date().toLocaleString("en-us").replace(",", "") +
+    "," +
+    time +
+    "," +
+    value +
+    "\n";
 
   fs.appendFileSync("./data.csv", data);
   res.send("data added: " + time + " = " + value);
